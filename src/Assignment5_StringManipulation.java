@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.Set;
+import java.util.function.Predicate;
 
 public class Assignment5_StringManipulation {
 
@@ -51,7 +53,13 @@ public class Assignment5_StringManipulation {
         String input = scanner.nextLine();
 
         // TODO: Подсчитать количество гласных (a, e, i, o, u)
+        Set<Character> vowels = Set.of('a', 'e', 'i', 'o', 'u');
+        Predicate<Character> isVowel = letter -> vowels.contains(letter); // didn't want to use usual function to make code shorter
+
         int count = 0;
+        for(int i = 0; i < input.length(); i ++){
+            count += isVowel.test((input.charAt(i))) ? 1 : 0;
+        }
 
         System.out.println("Number of vowels: " + count);
     }
